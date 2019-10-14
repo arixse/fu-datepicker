@@ -254,6 +254,19 @@ export default {
 <style lang="stylus">
 picker-width = 260px;
 
+:root {
+    --main-bg-color:#fff;
+    --prod-color-gray:#a5b0b6;
+    --bg-fill-normal:#fff;
+    --common-shadow:0 2px 6px #ccc;
+    --prod-normal-color:#38aef3;
+    --hover-bg-color:rgba(#38aef3,10%);
+    --function-disabled-color:rgba(#a5b0b6,10%);
+    --font-white-color:#fff;
+    --actived-bg-color:rgba(#a5b0b6,10%);
+    --function-link-color:#54d3be;
+}
+
 .fu-datepicker-container {
     background: var(--main-bg-color);
 
