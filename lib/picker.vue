@@ -3,13 +3,13 @@
         <div class="fu-datepicker" v-if="type=='datetime'" ref="picker">
             <div class="fu-datepicker-year-months">
                 <span class="slide-prev">
-                    <i class="slide-prev-next iconfont i-l1" @click.stop="prevYear"></i>
-                    <i class="slide-prev-next iconfont i-l" @click.stop="prevMonth"></i>
+                    <i class="slide-prev-next iconfont i-l1" @click.stop="prevYear">&lt;&lt;</i>
+                    <i class="slide-prev-next iconfont i-l" @click.stop="prevMonth">&lt;</i>
                 </span>
                 <span class="year-month-text" :title="year+'年'+month+'月'">{{year}}年{{month}}月</span>
                 <span class="slide-next">
-                    <i class="slide-prev-next iconfont i-r" @click.stop="nextMonth"></i>
-                    <i class="slide-prev-next iconfont i-r1" @click.stop="nextYear"></i>
+                    <i class="slide-prev-next iconfont i-r" @click.stop="nextMonth">&gt;</i>
+                    <i class="slide-prev-next iconfont i-r1" @click.stop="nextYear">&gt;&gt;</i>
                 </span>
             </div>
             <div class="fu-datepicker-date" v-show="pickDate">
@@ -46,9 +46,9 @@
         </div>
         <div class="fu-datepicker" v-if="type=='month'" @click.stop="showPicker=true" ref="picker">
             <div class="fu-datepicker-year-months">
-                <i class="slide-prev-next iconfont i-l1" @click.stop="prevYear"></i>
+                <i class="slide-prev-next iconfont i-l1" @click.stop="prevYear">&lt;</i>
                 <span class="year-month-text month-text" :title="year+'年'">{{year}}年</span>
-                <i class="slide-prev-next iconfont i-r1" @click.stop="nextYear"></i>
+                <i class="slide-prev-next iconfont i-r1" @click.stop="nextYear">&gt;</i>
             </div>
             <table>
                 <tr v-for="(row,index) in months" :key="index">
