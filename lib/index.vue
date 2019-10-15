@@ -98,6 +98,10 @@ export default {
 </script>
 <style lang="stylus">
 picker-width = 260px;
+:root {
+    --input-border-color-normal:#a5b0b6;
+    --input-border-color-focus:#38aef3
+}
 .fu-datepicker-input {
     width: picker-width;
     border: 1px solid var(--input-border-color-normal);
