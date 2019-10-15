@@ -76,12 +76,12 @@ export default {
         }
     },
     mounted() {
-        document.body.addEventListener("click", () => {
+        document.addEventListener("click", () => {
             this.closePicker()
         })
     },
     beforeDestroy() {
-        document.body.removeEventListener("click", () => {})
+        document.removeEventListener("click", () => {})
         if (this.pickerBox) {
             document.body.removeChild(this.pickerBox)
         }

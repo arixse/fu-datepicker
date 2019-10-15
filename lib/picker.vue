@@ -247,14 +247,6 @@ export default {
             }
             return result
         }
-    },
-    mounted() {
-        document.body.addEventListener("click", () => {
-            this.showPicker = false
-        })
-    },
-    beforeDestroy() {
-        document.body.removeEventListener("click")
     }
 }
 </script>
