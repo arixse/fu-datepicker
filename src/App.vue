@@ -3,8 +3,10 @@
     <h1>fu-datepicker</h1>
     <h4>A lightweight vue datepicker component</h4>
     <div class="box">
+      <span>datetime:</span>
       <date-picker></date-picker>
-      
+      <span>month:</span>
+      <date-picker :type="'month'"></date-picker>
     </div>
     <table class="props-table">
         <thead>
