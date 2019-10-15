@@ -37,9 +37,10 @@
                 </table>
             </div>
             <div class="fu-datepicker-time" v-show="!pickDate">
-                <div class="fu-time-item" v-for="hour in hours" :key="hour" @click.stop="changeHour(hour)" :class="{'actived':isHourActived(hour)}">{{hour}}</div>
-                <div class="fu-time-item" v-for="min in minAndSecs" :key="min" @click.stop="changeMin(min)" :class="{'actived':isMinActived(min)}">{{min}}</div>
-                <div class="fu-time-item" v-for="sec in minAndSecs" :key="sec" @click.stop="changeSec(sec)" :class="{'actived':isSecActived(sec)}">{{sec}}</div>
+                <div class="time-picker-area"><div class="fu-time-item" v-for="(hour,index) in hours" :key="index" @click.stop="changeHour(hour)" :class="{'actived':isHourActived(hour)}">{{hour}}</div></div>
+
+                <div class="time-picker-area"><div class="fu-time-item" v-for="(min,index) in minAndSecs" :key="index" @click.stop="changeMin(min)" :class="{'actived':isMinActived(min)}">{{min}}</div></div>
+                <div class="time-picker-area"><div class="fu-time-item" v-for="(sec,index) in minAndSecs" :key="index" @click.stop="changeSec(sec)" :class="{'actived':isSecActived(sec)}">{{sec}}</div></div>
             </div>
             <div class="fu-datepicker-pick-change" @click.stop="changePick">{{pickDate?'选择时间':'选择日期'}}</div>
         </div>
@@ -51,7 +52,7 @@
             </div>
             <table>
                 <tr v-for="(row,index) in months" :key="index">
-                    <td v-for="m in row" :key="m">
+                    <td v-for="(m,i) in row" :key="i">
                         <span
                             class="fu-month-item"
                             @click.stop="selectMonth(m)"
@@ -66,6 +67,12 @@
 
 <script>
 import datePickerHelper from "./date-helper"
+import $ from "jquery"
+import Vue from "vue"
+import moment from "moment"
+Vue.filter('time',function(val) {
+    return moment(val).format('YYYY-MM-DD HH:mm:ss')
+})
 export default {
     data() {
         return {
@@ -80,6 +87,7 @@ export default {
     },
     props: {
         value: {
+            // eslint-disable-next-line vue/require-prop-type-constructor
             type: Number | String,
             default: ""
         },
@@ -449,5 +457,12 @@ picker-width = 260px;
     background: var(--actived-bg-color);
     color: var(--function-link-color);
     font-weight: bold;
+}
+
+.time-picker-area {
+    float:left;
+    width:33%;
+    height:100%;
+    overflow-y:auto;
 }
 </style>

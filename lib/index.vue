@@ -7,17 +7,16 @@
 <script>
 import Vue from "vue"
 import Datepicker from "./picker"
+import $ from "jquery"
 export default {
     data() {
         return {
             widgetValue: ""
         }
     },
-    components: {
-        Datepicker
-    },
     props: {
         value: {
+            // eslint-disable-next-line vue/require-prop-type-constructor
             type: Number | String
         },
         placeholder: {
