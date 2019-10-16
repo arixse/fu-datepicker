@@ -4,7 +4,7 @@
     <h4>A lightweight vue datepicker component</h4>
     <div class="box">
       <span>datetime:</span>
-      <date-picker></date-picker>
+      <date-picker :value="Date.now()"></date-picker>
       <span>month:</span>
       <date-picker :type="'month'"></date-picker>
     </div>

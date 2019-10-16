@@ -37,10 +37,34 @@
                 </table>
             </div>
             <div class="fu-datepicker-time" v-show="!pickDate">
-                <div class="time-picker-area"><div class="fu-time-item" v-for="(hour,index) in hours" :key="index" @click.stop="changeHour(hour)" :class="{'actived':isHourActived(hour)}">{{hour}}</div></div>
+                <div class="time-picker-area">
+                    <div
+                        class="fu-time-item"
+                        v-for="(hour,index) in hours"
+                        :key="index"
+                        @click.stop="changeHour(hour)"
+                        :class="{'actived':isHourActived(hour)}"
+                    >{{hour}}</div>
+                </div>
 
-                <div class="time-picker-area"><div class="fu-time-item" v-for="(min,index) in minAndSecs" :key="index" @click.stop="changeMin(min)" :class="{'actived':isMinActived(min)}">{{min}}</div></div>
-                <div class="time-picker-area"><div class="fu-time-item" v-for="(sec,index) in minAndSecs" :key="index" @click.stop="changeSec(sec)" :class="{'actived':isSecActived(sec)}">{{sec}}</div></div>
+                <div class="time-picker-area">
+                    <div
+                        class="fu-time-item"
+                        v-for="(min,index) in minAndSecs"
+                        :key="index"
+                        @click.stop="changeMin(min)"
+                        :class="{'actived':isMinActived(min)}"
+                    >{{min}}</div>
+                </div>
+                <div class="time-picker-area">
+                    <div
+                        class="fu-time-item"
+                        v-for="(sec,index) in minAndSecs"
+                        :key="index"
+                        @click.stop="changeSec(sec)"
+                        :class="{'actived':isSecActived(sec)}"
+                    >{{sec}}</div>
+                </div>
             </div>
             <div class="fu-datepicker-pick-change" @click.stop="changePick">{{pickDate?'选择时间':'选择日期'}}</div>
         </div>
@@ -68,9 +92,21 @@
 <script>
 import datePickerHelper from "./date-helper"
 import Vue from "vue"
-import moment from "moment"
-Vue.filter('time',function(val) {
-    return moment(val).format('YYYY-MM-DD HH:mm:ss')
+
+function addZero(num, len = 2) {
+    return `${num}`.padStart(len, "0")
+}
+Vue.filter("time", function(val) {
+    if(!val) return '';
+    let date = val instanceof Date ? val : new Date(val)
+    let year = date.getFullYear()
+    let month = addZero(date.getMonth() + 1)
+    let day = addZero(date.getDate())
+    let hour = addZero(date.getHours())
+    let minute = addZero(date.getMinutes())
+    let seconds = addZero(date.getSeconds())
+
+    return `${year}-${month}-${day} ${hour}:${minute}:${seconds}`
 })
 export default {
     data() {
@@ -96,6 +132,7 @@ export default {
     },
     watch: {
         value: {
+            immediate:true,
             handler(newVal) {
                 let date = newVal instanceof Date ? newVal : new Date(newVal)
                 let year = date.getFullYear()
@@ -112,7 +149,10 @@ export default {
             let target = e.target
             let picker = this.$refs.picker
             let pickerPosition = target.getBoundingClientRect()
-            if (pickerPosition.top < target.offsetHeight + picker.offsetHeight) {
+            if (
+                pickerPosition.top <
+                target.offsetHeight + picker.offsetHeight
+            ) {
                 this.isTop = false
             } else {
                 this.isTop = true
@@ -254,16 +294,16 @@ export default {
 picker-width = 260px;
 
 :root {
-    --main-bg-color:#fff;
-    --prod-color-gray:#a5b0b6;
-    --bg-fill-normal:#fff;
-    --common-shadow:0 2px 6px #ccc;
-    --prod-normal-color:#38aef3;
-    --hover-bg-color:rgba(#38aef3,10%);
-    --function-disabled-color:rgba(#a5b0b6,10%);
-    --font-white-color:#fff;
-    --actived-bg-color:rgba(#a5b0b6,10%);
-    --function-link-color:#54d3be;
+    --main-bg-color: #fff;
+    --prod-color-gray: #a5b0b6;
+    --bg-fill-normal: #fff;
+    --common-shadow: 0 2px 6px #ccc;
+    --prod-normal-color: #38aef3;
+    --hover-bg-color: rgba(#38aef3, 10%);
+    --function-disabled-color: rgba(#a5b0b6, 10%);
+    --font-white-color: #fff;
+    --actived-bg-color: rgba(#a5b0b6, 10%);
+    --function-link-color: #54d3be;
 }
 
 .fu-datepicker-container {
@@ -314,7 +354,7 @@ picker-width = 260px;
                 background: var(--main-bg-color);
                 color: var(--prod-normal-color);
                 border: 1px solid var(--prod-normal-color);
-                font-size 12px;
+                font-size: 12px;
             }
 
             .fu-month-item.actived {
@@ -452,9 +492,9 @@ picker-width = 260px;
 }
 
 .time-picker-area {
-    float:left;
-    width:33%;
-    height:100%;
-    overflow-y:auto;
+    float: left;
+    width: 33%;
+    height: 100%;
+    overflow-y: auto;
 }
 </style>
