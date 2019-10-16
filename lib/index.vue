@@ -7,7 +7,6 @@
 <script>
 import Vue from "vue"
 import Datepicker from "./picker"
-import $ from "jquery"
 export default {
     data() {
         return {
@@ -52,16 +51,18 @@ export default {
             pickerInstance = this.pickerBox
             pickerInstance.style.position = "absolute"
             pickerInstance.style.left = pickerPosition.left + "px"
-            pickerInstance.style.zIndex = 999
+            pickerInstance.style.zIndex = 999;
+            let pickerHeight = pickerInstance.offsetHeight;
+            let pickerInputHeight = pickerInput.offsetHeight;
             if (
                 pickerPosition.top <
-                target.offsetHeight + $(pickerInstance).height()
+                target.offsetHeight + pickerHeight
             ) {
                 pickerInstance.style.top =
-                    pickerPosition.top + $(pickerInput).height() + "px"
+                    pickerPosition.top + pickerInputHeight + "px"
             } else {
                 pickerInstance.style.top =
-                    pickerPosition.top - $(pickerInstance).height() + "px"
+                    pickerPosition.top - pickerHeight + "px"
             }
             this.pickerBox.style.display = "block"
             this.vm.$children[0].$on("input", val => {

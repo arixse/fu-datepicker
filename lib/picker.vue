@@ -67,7 +67,6 @@
 
 <script>
 import datePickerHelper from "./date-helper"
-import $ from "jquery"
 import Vue from "vue"
 import moment from "moment"
 Vue.filter('time',function(val) {
@@ -113,7 +112,7 @@ export default {
             let target = e.target
             let picker = this.$refs.picker
             let pickerPosition = target.getBoundingClientRect()
-            if (pickerPosition.top < target.offsetHeight + $(picker).height()) {
+            if (pickerPosition.top < target.offsetHeight + picker.offsetHeight) {
                 this.isTop = false
             } else {
                 this.isTop = true
@@ -315,6 +314,7 @@ picker-width = 260px;
                 background: var(--main-bg-color);
                 color: var(--prod-normal-color);
                 border: 1px solid var(--prod-normal-color);
+                font-size 12px;
             }
 
             .fu-month-item.actived {
