@@ -41,7 +41,8 @@ npm install fu-datepicker --save
 import FuDatepicker from "fu-datepicker"
 ```
 
-## Run tests
+##  Run tests
+
 ```sh
 yarn test
 ```
