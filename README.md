@@ -1,14 +1,15 @@
 
-<h1 align="center">Welcome to fu-datepicker 👋</h1>
+<h1 align="center">Welcome to fu-datepicker 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+<img alat="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" >
   <a href="https://arixse.github.io/fu-datepicker/index.html" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" >
   </a>
   <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
   </a>
 </p>
+
 > A lightweight vue datepicker component
 
 
@@ -36,7 +37,7 @@ let FuDatepicker = require('/dist/FuDatepicker.common.js')
 ```sh
 npm install fu-datepicker --save
 ```
-```s
+```js
 import FuDatepicker from "fu-datepicker"
 ```
 
@@ -44,11 +45,13 @@ import FuDatepicker from "fu-datepicker"
 ```sh
 yarn test
 ```
-## Author
+##  Author
+
 👤 **arixse**
 * Github: [@arixse](https://github.com/arixse)
-## 🤝 Contributing
+
+## 🤝 Contributing
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/arixse/fu-datepicker/issues).
-## Show your support
+## Show your support
 Give a ⭐️ if this project helped you!
 
